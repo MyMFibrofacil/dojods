@@ -120,17 +120,24 @@
             </label>
 
             <label class="flex flex-col w-full sm:flex-1">
-              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Fecha de Nacimiento *</span>
-              <div class="relative">
+            <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Fecha de Nacimiento *</span>
+            <div class="relative">
                 <input
-                  name="fecha_nacimiento"
-                  required
-                  class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 pl-4 pr-10 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50 [color-scheme:dark]"
-                  type="date"
+                name="fecha_nacimiento"
+                required
+                inputmode="numeric"
+                maxlength="10"
+                pattern="^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$"
+                placeholder="DD/MM/AAAA"
+                title="Ingresá la fecha como DD/MM/AAAA (ej: 05/09/1997)."
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 pl-4 pr-10 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                type="text"
+                autocomplete="bday"
                 />
                 <span class="material-symbols-outlined absolute right-3 top-3 text-text-secondary pointer-events-none">calendar_today</span>
-              </div>
+            </div>
             </label>
+
           </div>
 
           <div class="flex flex-col gap-4">
