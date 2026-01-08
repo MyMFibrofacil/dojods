@@ -1,138 +1,237 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="dark" lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Formulario de Datos – Dojo DS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Formulario de Contacto</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#7f13ec",
+            "background-light": "#f7f6f8",
+            "background-dark": "#191022",
+            "surface-dark": "#2a1e35",
+            "surface-highlight": "#3b2a4d",
+            "text-secondary": "#ad92c9",
+          },
+          fontFamily: { "display": ["Lexend", "sans-serif"] },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
 
   <style>
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#0b1220; color:#e6edf7; }
-    .container { max-width: 900px; margin: 0 auto; padding: 24px; }
-    .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 24px; }
-    h1 { margin: 0 0 14px; font-size: 22px; }
-    h2 { margin: 26px 0 10px; font-size: 16px; color:#cfe0ff; }
-
-    .grid-2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-
-    label { display:block; font-size: 12px; margin-bottom: 6px; opacity: 0.85; }
-    input {
-      width: 100%; padding: 11px 12px; border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(0,0,0,0.25); color:#e6edf7;
-    }
-    input::placeholder { opacity: 0.6; }
-    .full { grid-column: 1 / -1; }
-
-    button {
-      margin-top: 26px; padding: 14px; width: 100%;
-      border-radius: 14px; border: none;
-      background:#2fe87a; color:#04140a;
-      font-size: 16px; font-weight: 700; cursor: pointer;
-    }
-    .note { margin-top: 14px; font-size: 12px; opacity: 0.7; text-align:center; }
-
-    @media (max-width: 760px){
-      .grid-2, .grid-3 { grid-template-columns: 1fr; }
-    }
+    body { min-height: max(884px, 100dvh); }
   </style>
 </head>
 
-<body>
-  <div class="container">
-    <div class="card">
-      <h1>Formulario de Alta de Datos</h1>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white">
 
-      <form
-        id="alumno-form"
-        action="https://script.google.com/macros/s/AKfycbyuMY2YZRsDm1SqnRe497KMwAIRFOJxpsoexVq76tMpCMFRw7t6kzUMwzQIKZkzt1KJxw/exec"
-        method="POST"
-      >
-        <h2>Datos personales</h2>
-        <div class="grid-2">
-          <div>
-            <label>Nombre *</label>
-            <input name="nombre" required maxlength="60" placeholder="Juan">
-          </div>
-          <div>
-            <label>Apellido *</label>
-            <input name="apellido" required maxlength="60" placeholder="Pérez">
-          </div>
+  <div class="sticky top-0 z-50 bg-background-light dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-white/5">
+    <div class="flex items-center p-4 justify-between max-w-lg mx-auto w-full">
+      <button type="button" class="text-slate-900 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full active:bg-black/5 dark:active:bg-white/10 transition-colors">
+        <span class="material-symbols-outlined">arrow_back_ios_new</span>
+      </button>
 
-          <div>
-            <label>DNI *</label>
-            <input name="dni" required maxlength="20" placeholder="12345678">
-          </div>
-          <div>
-            <label>Fecha de nacimiento *</label>
-            <input type="date" name="fecha_nacimiento" required>
-          </div>
-
-          <div>
-            <label>Celular *</label>
-            <input name="celular" required maxlength="30" placeholder="+54 11 ...">
-          </div>
-          <div>
-            <label>Mail *</label>
-            <input type="email" name="mail" required maxlength="120" placeholder="correo@ejemplo.com">
-          </div>
-
-          <div class="full">
-            <label>Dirección *</label>
-            <input name="direccion" required maxlength="120" placeholder="Calle 123, Piso, Depto">
-          </div>
-
-          <div class="full">
-            <label>Localidad *</label>
-            <input name="localidad" required maxlength="80" placeholder="San Fernando">
-          </div>
-        </div>
-
-        <h2>Contacto de emergencia 1</h2>
-        <div class="grid-3">
-          <div>
-            <label>Nombre y apellido *</label>
-            <input name="em1_nombre" required maxlength="120" placeholder="María Pérez">
-          </div>
-          <div>
-            <label>Celular *</label>
-            <input name="em1_celular" required maxlength="30" placeholder="+54 11 ...">
-          </div>
-          <div>
-            <label>Relación *</label>
-            <input name="em1_relacion" required maxlength="50" placeholder="Madre / Padre / Pareja">
-          </div>
-        </div>
-
-        <h2>Contacto de emergencia 2</h2>
-        <div class="grid-3">
-          <div>
-            <label>Nombre y apellido *</label>
-            <input name="em2_nombre" required maxlength="120" placeholder="Carlos Gómez">
-          </div>
-          <div>
-            <label>Celular *</label>
-            <input name="em2_celular" required maxlength="30" placeholder="+54 11 ...">
-          </div>
-          <div>
-            <label>Relación *</label>
-            <input name="em2_relacion" required maxlength="50" placeholder="Hermano / Amigo">
-          </div>
-        </div>
-
-        <input type="hidden" name="excel_csv">
-        <input type="hidden" name="excel_filename">
-        <input type="hidden" name="excel_mime" value="text/csv">
-
-        <button type="submit">Enviar</button>
-
-        <div class="note">
-          Al enviar, los datos se registran y se notifica por email.
-        </div>
-      </form>
+      <h1 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight text-center flex-1 pr-10">
+        Formulario de Contacto
+      </h1>
     </div>
   </div>
 
-  <script src="index_mail.js" defer></script>
+  <main class="flex-1 w-full max-w-lg mx-auto flex flex-col pb-10">
+
+    <!-- FORM REAL (POST clásico) -->
+    <form
+      id="alumno-form"
+      method="POST"
+      action="https://script.google.com/macros/s/AKfycbyuMY2YZRsDm1SqnRe497KMwAIRFOJxpsoexVq76tMpCMFRw7t6kzUMwzQIKZkzt1KJxw/exec"
+      class="flex-1"
+    >
+      <!-- Hidden para CSV -->
+      <input type="hidden" name="excel_csv" value="">
+      <input type="hidden" name="excel_filename" value="">
+      <input type="hidden" name="excel_mime" value="text/csv">
+
+      <!-- Datos Personales -->
+      <div class="px-4 pt-6 pb-2">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-sm">person</span>
+          </div>
+          <h2 class="text-slate-900 dark:text-white text-lg font-bold">Datos Personales</h2>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <div class="flex gap-4">
+            <label class="flex flex-col flex-1">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Nombre</span>
+              <input name="nombre" required
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                placeholder="Juan" type="text"/>
+            </label>
+
+            <label class="flex flex-col flex-1">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Apellido</span>
+              <input name="apellido" required
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                placeholder="Pérez" type="text"/>
+            </label>
+          </div>
+
+          <div class="flex gap-4 flex-wrap sm:flex-nowrap">
+            <label class="flex flex-col w-full sm:w-1/3">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">DNI</span>
+              <input name="dni" required
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                placeholder="12345678" type="tel"/>
+            </label>
+
+            <label class="flex flex-col w-full sm:flex-1">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Fecha de Nacimiento</span>
+              <div class="relative">
+                <input name="fecha_nacimiento" required
+                  class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 pl-4 pr-10 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50 [color-scheme:dark]"
+                  type="date"/>
+                <span class="material-symbols-outlined absolute right-3 top-3 text-text-secondary pointer-events-none">calendar_today</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="flex flex-col gap-4">
+            <label class="flex flex-col w-full">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Celular</span>
+              <input name="celular" required
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                placeholder="+54 9 11 1234 5678" type="tel"/>
+            </label>
+
+            <label class="flex flex-col w-full">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Email</span>
+              <input name="mail" required
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                placeholder="juan.perez@ejemplo.com" type="email"/>
+            </label>
+          </div>
+
+          <div class="flex flex-col gap-4">
+            <label class="flex flex-col w-full">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Dirección</span>
+              <input name="direccion" required
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                placeholder="Av. Siempre Viva 742" type="text"/>
+            </label>
+
+            <label class="flex flex-col w-full">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Localidad</span>
+              <input name="localidad" required
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                placeholder="San Fernando" type="text"/>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-6 h-px w-full bg-slate-200 dark:bg-white/5"></div>
+
+      <!-- Emergencia 1 -->
+      <div class="px-4 pb-4">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-sm">emergency_home</span>
+          </div>
+          <h2 class="text-slate-900 dark:text-white text-lg font-bold">Contacto de Emergencia 1</h2>
+        </div>
+
+        <div class="flex flex-col gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-surface-dark/50 border border-slate-200 dark:border-white/5">
+          <label class="flex flex-col w-full">
+            <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Nombre y Apellido</span>
+            <input name="em1_nombre" required
+              class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+              placeholder="Contacto Principal" type="text"/>
+          </label>
+
+          <div class="flex gap-4">
+            <label class="flex flex-col w-3/5">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Celular</span>
+              <input name="em1_celular" required
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                placeholder="Número" type="tel"/>
+            </label>
+
+            <!-- Relación como TEXTO LIBRE (para coincidir con tu requerimiento) -->
+            <label class="flex flex-col w-2/5">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Relación</span>
+              <input name="em1_relacion" required
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                placeholder="Madre / Padre / Tutor" type="text"/>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emergencia 2 -->
+      <div class="px-4 pb-4">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-sm">emergency_home</span>
+          </div>
+          <h2 class="text-slate-900 dark:text-white text-lg font-bold">Contacto de Emergencia 2</h2>
+        </div>
+
+        <div class="flex flex-col gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-surface-dark/50 border border-slate-200 dark:border-white/5">
+          <label class="flex flex-col w-full">
+            <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Nombre y Apellido</span>
+            <input name="em2_nombre" required
+              class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+              placeholder="Contacto Secundario" type="text"/>
+          </label>
+
+          <div class="flex gap-4">
+            <label class="flex flex-col w-3/5">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Celular</span>
+              <input name="em2_celular" required
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                placeholder="Número" type="tel"/>
+            </label>
+
+            <label class="flex flex-col w-2/5">
+              <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Relación</span>
+              <input name="em2_relacion" required
+                class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+                placeholder="Familiar / Vecino / Otro" type="text"/>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="p-4 pt-6">
+        <button type="submit"
+          class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-primary/30 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+          <span>Enviar Formulario</span>
+          <span class="material-symbols-outlined text-xl">send</span>
+        </button>
+      </div>
+
+      <div class="px-4">
+        <p class="text-xs text-slate-600 dark:text-text-secondary/80 text-center">
+          Al enviar, los datos se registran y se notifica por email.
+        </p>
+      </div>
+    </form>
+  </main>
+
+  <!-- Tu JS que genera excel_csv y excel_filename -->
+  <script src="./index_mail.js"></script>
 </body>
 </html>
