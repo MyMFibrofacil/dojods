@@ -1,163 +1,198 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
+  <title>Formulario de Datos – Dojo DS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alta de Contacto</title>
+
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 0; background:#0b1220; color:#e6edf7; }
-    .wrap { max-width: 860px; margin: 0 auto; padding: 24px; }
-    .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 18px; }
-    h1 { font-size: 22px; margin: 0 0 14px; }
-    h2 { font-size: 16px; margin: 18px 0 10px; color:#cfe0ff; }
-    .grid { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid3 { display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    label { display:block; font-size: 12px; opacity: 0.9; margin-bottom: 6px; }
-    input { width:100%; padding: 11px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.14); background: rgba(0,0,0,0.25); color:#e6edf7; }
-    input::placeholder { opacity: 0.55; }
-    .full { grid-column: 1 / -1; }
-    .row { display:flex; gap: 12px; align-items:center; margin-top: 16px; }
-    button { padding: 12px 16px; border-radius: 12px; border: 0; background:#2fe87a; color:#04140a; font-weight: 700; cursor:pointer; }
-    button:disabled { opacity: 0.6; cursor:not-allowed; }
-    .status { font-size: 13px; opacity: 0.95; }
-    .note { font-size: 12px; opacity: 0.75; margin-top: 10px; }
-    @media (max-width: 760px){
-      .grid, .grid3 { grid-template-columns: 1fr; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: #0b1220;
+      color: #e6edf7;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    h2 {
+      margin-top: 28px;
+      font-size: 16px;
+      color: #cfe0ff;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 6px;
+      opacity: 0.85;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.25);
+      color: #e6edf7;
+    }
+
+    input::placeholder {
+      opacity: 0.6;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    button {
+      margin-top: 28px;
+      padding: 14px;
+      width: 100%;
+      border-radius: 14px;
+      border: none;
+      background: #2fe87a;
+      color: #04140a;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .note {
+      margin-top: 16px;
+      font-size: 12px;
+      opacity: 0.7;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+  <div class="container">
     <div class="card">
-      <h1>Formulario de Alta de Contacto</h1>
 
-      <form id="leadForm">
+      <h1>Formulario de Alta de Datos</h1>
+
+      <!-- ⚠️ PEGÁ ACÁ TU URL DE APPS SCRIPT QUE TERMINE EN /exec -->
+      <form
+        action="https://script.google.com/macros/s/PEGAR_ID_REAL_AQUI/exec"
+        method="POST"
+      >
+
         <h2>Datos personales</h2>
-        <div class="grid">
+        <div class="grid-2">
           <div>
             <label>Nombre *</label>
-            <input name="nombre" required maxlength="60" placeholder="Juan" />
+            <input name="nombre" required>
           </div>
           <div>
             <label>Apellido *</label>
-            <input name="apellido" required maxlength="60" placeholder="Pérez" />
+            <input name="apellido" required>
           </div>
 
           <div>
             <label>DNI *</label>
-            <input name="dni" required maxlength="20" inputmode="numeric" placeholder="12345678" />
+            <input name="dni" required>
           </div>
           <div>
             <label>Fecha de nacimiento *</label>
-            <input name="fecha_nacimiento" required type="date" />
+            <input type="date" name="fecha_nacimiento" required>
           </div>
 
           <div>
             <label>Celular *</label>
-            <input name="celular" required maxlength="30" placeholder="+54 11 ..." />
+            <input name="celular" required>
           </div>
           <div>
             <label>Mail *</label>
-            <input name="mail" required maxlength="120" type="email" placeholder="correo@ejemplo.com" />
+            <input type="email" name="mail" required>
           </div>
 
           <div class="full">
             <label>Dirección *</label>
-            <input name="direccion" required maxlength="120" placeholder="Calle 123, Piso, Depto" />
+            <input name="direccion" required>
           </div>
+
           <div class="full">
             <label>Localidad *</label>
-            <input name="localidad" required maxlength="80" placeholder="San Fernando" />
+            <input name="localidad" required>
           </div>
         </div>
 
         <h2>Contacto de emergencia 1</h2>
-        <div class="grid3">
+        <div class="grid-3">
           <div>
             <label>Nombre y apellido *</label>
-            <input name="em1_nombre" required maxlength="120" placeholder="María Pérez" />
+            <input name="em1_nombre" required>
           </div>
           <div>
             <label>Celular *</label>
-            <input name="em1_celular" required maxlength="30" placeholder="+54 11 ..." />
+            <input name="em1_celular" required>
           </div>
           <div>
             <label>Relación *</label>
-            <input name="em1_relacion" required maxlength="50" placeholder="Madre / Padre / Pareja" />
+            <input name="em1_relacion" required>
           </div>
         </div>
 
         <h2>Contacto de emergencia 2</h2>
-        <div class="grid3">
+        <div class="grid-3">
           <div>
             <label>Nombre y apellido *</label>
-            <input name="em2_nombre" required maxlength="120" placeholder="Carlos Gómez" />
+            <input name="em2_nombre" required>
           </div>
           <div>
             <label>Celular *</label>
-            <input name="em2_celular" required maxlength="30" placeholder="+54 11 ..." />
+            <input name="em2_celular" required>
           </div>
           <div>
             <label>Relación *</label>
-            <input name="em2_relacion" required maxlength="50" placeholder="Hermano / Amigo" />
+            <input name="em2_relacion" required>
           </div>
         </div>
 
-        <div class="row">
-          <button id="btnSubmit" type="submit">Enviar</button>
-          <div id="status" class="status"></div>
-        </div>
+        <button type="submit">Enviar</button>
 
         <div class="note">
-          Al enviar, se registran los datos y se notifica por email.
+          Al enviar el formulario, los datos se registran y se notifica por email.
         </div>
+
       </form>
     </div>
   </div>
-
-  <script>
-    const ENDPOINT = "https://script.google.com/macros/s/AKfycbyuMY2YZRsDm1SqnRe497KMwAIRFOJxpsoexVq76tMpCMFRw7t6kzUMwzQIKZkzt1KJxw/exec"; // <- pegá acá tu URL del Web App
-    const form = document.getElementById("leadForm");
-    const statusEl = document.getElementById("status");
-    const btn = document.getElementById("btnSubmit");
-
-    function toJSON(formEl) {
-      const fd = new FormData(formEl);
-      const obj = {};
-      for (const [k, v] of fd.entries()) obj[k] = String(v ?? "").trim();
-      return obj;
-    }
-
-    form.addEventListener("submit", async (ev) => {
-      ev.preventDefault();
-      statusEl.textContent = "";
-      btn.disabled = true;
-      btn.textContent = "Enviando...";
-
-      try {
-        const payload = toJSON(form);
-
-        const res = await fetch(ENDPOINT, {
-          method: "POST",
-          // Content-Type como text/plain para evitar ciertos bloqueos de CORS con Apps Script
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload),
-        });
-
-        const data = await res.json();
-        if (!data.ok) throw new Error(data.error || "No se pudo enviar");
-
-        statusEl.textContent = "Listo. Datos recibidos correctamente.";
-        form.reset();
-
-      } catch (err) {
-        statusEl.textContent = "Error: " + (err.message || err);
-      } finally {
-        btn.disabled = false;
-        btn.textContent = "Enviar";
-      }
-    });
-  </script>
 </body>
 </html>
