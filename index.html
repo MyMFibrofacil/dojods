@@ -44,6 +44,7 @@
       <h1>Formulario de Alta de Datos</h1>
 
       <form
+        id="alumno-form"
         action="https://script.google.com/macros/s/AKfycbyuMY2YZRsDm1SqnRe497KMwAIRFOJxpsoexVq76tMpCMFRw7t6kzUMwzQIKZkzt1KJxw/exec"
         method="POST"
       >
@@ -119,6 +120,10 @@
           </div>
         </div>
 
+        <input type="hidden" name="excel_csv">
+        <input type="hidden" name="excel_filename">
+        <input type="hidden" name="excel_mime" value="text/csv">
+
         <button type="submit">Enviar</button>
 
         <div class="note">
@@ -127,5 +132,7 @@
       </form>
     </div>
   </div>
+
+  <script src="index_mail.js" defer></script>
 </body>
 </html>
