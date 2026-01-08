@@ -21,9 +21,7 @@
 
   const fieldOrder = Object.keys(fieldLabels);
 
-  const csvEscape = (value) => {
-    return `"${String(value ?? "").replace(/"/g, '""')}"`;
-  };
+  const csvEscape = (value) => `"${String(value ?? "").replace(/"/g, '""')}"`;
 
   const buildCsv = (formData) => {
     const headerRow = fieldOrder.map((key) => csvEscape(fieldLabels[key]));
@@ -40,7 +38,14 @@
       .slice(0, 60);
   };
 
-  form.addEventListener("submit", () => {
+  let submitting = false;
+
+  form.addEventListener("submit", (ev) => {
+    // Evita loop si reenviamos con form.submit()
+    if (submitting) return;
+
+    ev.preventDefault();
+
     const formData = new FormData(form);
     const csv = buildCsv(formData);
 
@@ -54,5 +59,14 @@
 
     const nameInput = form.querySelector('input[name="excel_filename"]');
     if (nameInput) nameInput.value = `${base}_${dateStamp}.csv`;
+
+    const mimeInput = form.querySelector('input[name="excel_mime"]');
+    if (mimeInput && !mimeInput.value) mimeInput.value = "text/csv";
+
+    // Debug opcional (podés dejarlo un rato y después sacar)
+    // console.log("CSV length:", (csvInput?.value || "").length);
+
+    submitting = true;
+    form.submit();
   });
 })();
