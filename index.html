@@ -127,9 +127,9 @@
                 required
                 inputmode="numeric"
                 maxlength="10"
-                pattern="^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$"
-                placeholder="DD/MM/AAAA"
-                title="Ingresá la fecha como DD/MM/AAAA (ej: 05/09/1997)."
+                pattern="^(0[1-9]|[12][0-9]|3[01])[\/-](0[1-9]|1[0-2])[\/-]\d{4}$"
+                placeholder="DD/MM/AAAA o DD-MM-AAAA"
+                title="Ingresá la fecha como DD/MM/AAAA o DD-MM-AAAA (ej: 05/09/1997 o 05-09-1997)."
                 class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 pl-4 pr-10 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
                 type="text"
                 autocomplete="bday"
@@ -144,12 +144,25 @@
             <label class="flex flex-col w-full">
               <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Celular *</span>
               <input
+
                 name="celular"
+
                 required
-                maxlength="30"
+
+                inputmode="numeric"
+
+                maxlength="10"
+
+                pattern="^\d{1,10}$"
+
+                title="Ingres? hasta 10 d?gitos, sin espacios."
+
                 class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
-                placeholder="+54 9 11 1234 5678"
+
+                placeholder="1112345678"
+
                 type="tel"
+
               />
             </label>
 
@@ -224,12 +237,25 @@
             <label class="flex flex-col w-3/5">
               <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Celular *</span>
               <input
+
                 name="em1_celular"
+
                 required
-                maxlength="30"
+
+                inputmode="numeric"
+
+                maxlength="10"
+
+                pattern="^\d{1,10}$"
+
+                title="Ingres? hasta 10 d?gitos, sin espacios."
+
                 class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+
                 placeholder="Número"
+
                 type="tel"
+
               />
             </label>
 
@@ -274,12 +300,25 @@
             <label class="flex flex-col w-3/5">
               <span class="text-sm font-medium text-slate-600 dark:text-text-secondary pb-1.5 ml-1">Celular *</span>
               <input
+
                 name="em2_celular"
+
                 required
-                maxlength="30"
+
+                inputmode="numeric"
+
+                maxlength="10"
+
+                pattern="^\d{1,10}$"
+
+                title="Ingres? hasta 10 d?gitos, sin espacios."
+
                 class="form-input w-full rounded-xl border-none bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white h-12 px-4 placeholder:text-slate-400 dark:placeholder:text-text-secondary/50"
+
                 placeholder="Número"
+
                 type="tel"
+
               />
             </label>
 

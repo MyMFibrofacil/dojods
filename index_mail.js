@@ -46,6 +46,22 @@
 
     ev.preventDefault();
 
+    const fechaInput = form.querySelector('input[name="fecha_nacimiento"]');
+    if (fechaInput && fechaInput.value) {
+      fechaInput.value = fechaInput.value.replace(/-/g, "/");
+    }
+
+    const normalizePhone = (value) => {
+      const digits = String(value || "").replace(/\D/g, "");
+      if (digits.startsWith("549")) return digits.slice(3);
+      return digits;
+    };
+
+    const celularInput = form.querySelector('input[name="celular"]');
+    if (celularInput && celularInput.value) {
+      celularInput.value = normalizePhone(celularInput.value);
+    }
+
     const formData = new FormData(form);
     const csv = buildCsv(formData);
 
