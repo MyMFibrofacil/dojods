@@ -89,7 +89,8 @@
       const day = daySelect?.value || "";
       const month = monthSelect?.value || "";
       const year = yearSelect?.value || "";
-      fechaInput.value = day && month && year ? `${day}/${month}/${year}` : "";
+      // Guardar en ISO (YYYY-MM-DD) aunque el usuario complete DD-MM-YYYY.
+      fechaInput.value = day && month && year ? `${year}-${month}-${day}` : "";
     }
 
     const normalizePhone = (value) => {
